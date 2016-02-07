@@ -36,7 +36,7 @@ Note: You can using < br / > in content : "Lorem < br / > Ipsum".
 
 time : Time display message. Default value : 2500.
 
-### @CSS
+### @ CSS
 
 You cant using CSS for message element. Example :
 
