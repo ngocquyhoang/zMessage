@@ -4,25 +4,20 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>zMessage | github@ngocquyhoang/zMessage</title>
-	<link rel="stylesheet" href="customize.css">
 	<script src="./jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="./zMessage.js" type="text/javascript" charset="utf-8"></script>
 	<style type="text/css">
 		@-webkit-keyframes zHide {
-			from {left: 0px;}
-			to {left: 22em;}
+			from {left: 0px;} to {left: 22em;}
 		}
 		@keyframes zHide {
-			from {left: 0px;}
-			to {left: 22em;}
+			from {left: 0px;} to {left: 22em;}
 		}
 		@-webkit-keyframes zShow {
-			from {left: 22em;}
-			to {left: 0em;}
+			from {left: 22em;} to {left: 0em;}
 		}
 		@keyframes zShow {
-			from {left: 22em;}
-			to {left: 0em;}
+			from {left: 22em;} to {left: 0em;}
 		}
 		@font-face {
 			font-family: Hero;
@@ -152,6 +147,19 @@
 		<p class="code tab">time: 3000,</p>
 		<p class="code tab">type: "success",</p>
 		<p class="code">});</p>
+		<p class="step">Step 3 : <b>Must</b> add keyframe to CSS </p>
+		<p class="code">@-webkit-keyframes zHide {</p>
+		<p class="code tab">	from {left: 0px;} to {left: 22em;}</p>
+		<p class="code">}</p>
+		<p class="code">@keyframes zHide {</p>
+		<p class="code tab">	from {left: 0px;} to {left: 22em;}</p>
+		<p class="code">}</p>
+		<p class="code">@-webkit-keyframes zShow {</p>
+		<p class="code tab">	from {left: 22em;} to {left: 0em;}</p>
+		<p class="code">}</p>
+		<p class="code">@keyframes zShow {</p>
+		<p class="code tab">	from {left: 22em;} to {left: 0em;}</p>
+		<p class="code">}</p>
 		<p class="title">@ More options</p>
 		<p class="content">type : String, There are 3 types of messages "success" , "error" and "warning".</p>
 		<p class="content">message : String</p>

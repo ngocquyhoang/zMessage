@@ -1,7 +1,6 @@
 function zMessage (zData) {
 	var zElement = document.getElementById('zmessage');
 	// create a box
-	// zKeyframe();
 	if (!zElement) {
 		var zBox = document.createElement("div");
 		document.body.appendChild(zBox);
