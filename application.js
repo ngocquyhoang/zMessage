@@ -1,53 +1,4 @@
 function zMessages (zData) {
-	// set Theme for message
-	if (zData["theme"]) {
-		setThemeMessage(zData["theme"]);
-	}else{
-		setThemeMessage("defaultTheme");
-	};
-	// set type for message
-	if (zData["type"]) {
-		setTypeMessage(zData["type"]);
-	}else{
-		setTypeMessage("defaultType");
-	};
-	// set contents for message
-	if (zData["content"]) {
-		setContentMessage(zData["content"]);
-	}else{
-		setContentMessage("Wellcome to Zorba");
-	};
-	// set time for message
-	if (zData["time"]) {
-		setTimeMessage(zData["time"]);
-	}else{
-		setTimeMessage(1500);
-	};
-}
-function setThemeMessage (zTheme) {
-	if (zTheme == "defaultTheme") {
-		// set default theme
-	}else{
-		// set other theme
-	};
-}
-function setTypeMessage (zType) {
-	if (zType == "success") {
-		// success
-	} else{
-		if (zType == "error") {
-			// error
-		} else{
-			if (zType == "warning") {
-				// warning
-			} else{
-				console.log("Type of message incorrect . Please check again !");
-			};
-		};
-	};
-}
-// create element
-function createZElement () {
 	var zElement = document.getElementById('zmessage-box');
 	// create a box
 	if (!zElement) {
@@ -69,32 +20,70 @@ function createZElement () {
 		// create message here
 		var zMessage = document.createElement("li");
 		zList.appendChild(zMessage);
-		$(zMessage).css({
-			'background-color':'#ff4455',
-			'border':'1px solid #000',
-			'color':'#fff',
-			'padding': '5px 10px',
-			'margin': '8px 0',
-		});
-		$(zMessage).html("Content here");
+		$(zMessage).css(zCSS(zData["type"]));
+		if (zData["message"]) {
+			$(zMessage).html(zData["message"]);
+		} else{
+			$(zMessage).html("Wellcome to zMessage");
+		};
+		if (zData["time"]) {
+			if (!isNaN(zData["time"])) {
+				var zTime = zData["time"]
+			} else{
+				var zTime = 2500;
+			};
+		} else{
+			var zTime = 2500;
+		};
 		setTimeout(function(){ 
 			$(zMessage).hide(); 
 			setTimeout(function(){ $(zMessage).remove(); }, 50);
-		}, 1500);
+		}, zTime);
 	} else{
 		var $zMessage = $('<li></li>');
 		$('#zmessage-box ul').prepend($zMessage);
-		$zMessage.css({
-			'background-color':'#ff4455',
-			'border':'1px solid #000',
-			'color':'#fff',
-			'padding': '5px 10px',
-			'margin': '8px 0',
-		});
-		$zMessage.html("Content heres");
+		$zMessage.css(zCSS());
+		if (zData["message"]) {
+			$zMessage.html(zData["message"]);
+		} else{
+			$zMessage.html("Wellcome to zMessage");
+		};
+		if (zData["time"]) {
+			if (!isNaN(zData["time"])) {
+				var zTime = zData["time"]
+			} else{
+				var zTime = 2500;
+			};
+		} else{
+			var zTime = 2500;
+		};
 		setTimeout(function(){ 
 			$zMessage.hide(); 
 			setTimeout(function(){$zMessage.remove();}, 50); 
-		}, 1500);
+		}, zTime);
 	};
+}
+function zCSS (zType) {
+	var zLocalType;
+	if (zType) {
+		zLocalType = {
+			'border':'1px solid #007AFF',
+			'color':'#007AFF',
+			'padding': '8px 16px',
+			'margin': '8px 0',
+			'width': '18em',
+			'text-align': 'center',
+		};
+	} else{
+		// set default value
+		zLocalType = {
+			'border':'1px solid #007AFF',
+			'color':'#007AFF',
+			'padding': '8px 16px',
+			'margin': '8px 0',
+			'width': '18em',
+			'text-align': 'center',
+		};
+	};
+	return zLocalType; 
 }
