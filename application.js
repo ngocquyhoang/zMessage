@@ -1,6 +1,7 @@
 function zMessages (zData) {
 	var zElement = document.getElementById('zmessage-box');
 	// create a box
+	// zKeyframe();
 	if (!zElement) {
 		var zBox = document.createElement("div");
 		document.body.appendChild(zBox);
@@ -12,7 +13,6 @@ function zMessages (zData) {
 		});
 		var zList = document.createElement("ul");
 		zBox.appendChild(zList);
-		// $(zList).attr('id', 'theme-name');
 		$(zList).css({
 			'list-style': 'none',
 			'margin': '0',
@@ -21,6 +21,7 @@ function zMessages (zData) {
 		var zMessage = document.createElement("li");
 		zList.appendChild(zMessage);
 		$(zMessage).css(zCSS(zData["type"]));
+		$(zMessage).css(cssShow());
 		if (zData["message"]) {
 			$(zMessage).html(zData["message"]);
 		} else{
@@ -36,13 +37,14 @@ function zMessages (zData) {
 			var zTime = 2500;
 		};
 		setTimeout(function(){ 
-			$(zMessage).hide(); 
-			setTimeout(function(){ $(zMessage).remove(); }, 50);
+			$(zMessage).css(cssHide()); 
+			setTimeout(function(){ $(zMessage).remove(); }, 500);
 		}, zTime);
 	} else{
 		var $zMessage = $('<li></li>');
 		$('#zmessage-box ul').prepend($zMessage);
 		$zMessage.css(zCSS(zData["type"]));
+		$zMessage.css(cssShow());
 		if (zData["message"]) {
 			$zMessage.html(zData["message"]);
 		} else{
@@ -58,8 +60,8 @@ function zMessages (zData) {
 			var zTime = 2500;
 		};
 		setTimeout(function(){ 
-			$zMessage.hide(); 
-			setTimeout(function(){$zMessage.remove();}, 50); 
+			$zMessage.css(cssHide()); 
+			setTimeout(function(){$zMessage.remove();}, 500); 
 		}, zTime);
 	};
 }
@@ -75,6 +77,7 @@ function zCSS (zType) {
 					'margin': '8px 0',
 					'max-width': '18em',
 					'text-align': 'center',
+					'position': 'relative',
 				};
 				break;
 			case "error":
@@ -84,6 +87,7 @@ function zCSS (zType) {
 					'padding': '8px 16px',
 					'margin': '8px 0',
 					'max-width': '18em',
+					'position': 'relative',
 					'text-align': 'center',
 				};
 				break;
@@ -95,6 +99,7 @@ function zCSS (zType) {
 					'margin': '8px 0',
 					'max-width': '18em',
 					'text-align': 'center',
+					'position': 'relative',
 				};
 				break;
 			default:
@@ -104,6 +109,7 @@ function zCSS (zType) {
 					'padding': '8px 16px',
 					'margin': '8px 0',
 					'max-width': '18em',
+					'position': 'relative',
 					'text-align': 'center',
 				};
 		};
@@ -115,8 +121,30 @@ function zCSS (zType) {
 			'padding': '8px 16px',
 			'margin': '8px 0',
 			'max-width': '18em',
+			'position': 'relative',
 			'text-align': 'center',
 		};
 	};
 	return zLocalType; 
+}
+// function add animantion
+function cssHide () {
+	var localCss;
+	localCss = {
+		'-webkit-animation': 'zHide 0.5s',
+		'animation': 'zHide 0.5s',
+		'-webkit-animation-timing-function': 'ease-in',
+		'animation-timing-function': 'ease-in',
+	};
+	return localCss; 
+}
+function cssShow () {
+	var localCss;
+	localCss = {
+		'-webkit-animation': 'zShow 0.5s',
+		'animation': 'zShow 0.5s',
+		'-webkit-animation-timing-function': 'ease-out',
+		'animation-timing-function': 'ease-out',
+	};
+	return localCss;
 }
