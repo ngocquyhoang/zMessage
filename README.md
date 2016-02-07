@@ -1,4 +1,5 @@
 ## zMessage
+### [Link Download](https://github.com/ngocquyhoang/zMessage/archive/ngocquyhoang.zip)
 ### @ Easy to use
 #### Step 1 : Add zMessage.js script file
 `<script src="./zMessage.js" type="text/javascript" ></script>`
