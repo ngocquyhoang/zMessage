@@ -42,7 +42,7 @@ function zMessages (zData) {
 	} else{
 		var $zMessage = $('<li></li>');
 		$('#zmessage-box ul').prepend($zMessage);
-		$zMessage.css(zCSS());
+		$zMessage.css(zCSS(zData["type"]));
 		if (zData["message"]) {
 			$zMessage.html(zData["message"]);
 		} else{
@@ -66,13 +66,46 @@ function zMessages (zData) {
 function zCSS (zType) {
 	var zLocalType;
 	if (zType) {
-		zLocalType = {
-			'border':'1px solid #007AFF',
-			'color':'#007AFF',
-			'padding': '8px 16px',
-			'margin': '8px 0',
-			'width': '18em',
-			'text-align': 'center',
+		switch (zType) {
+			case "success":
+				zLocalType = {
+					'border':'1px solid #4CD964',
+					'color':'#4CD964',
+					'padding': '8px 16px',
+					'margin': '8px 0',
+					'max-width': '18em',
+					'text-align': 'center',
+				};
+				break;
+			case "error":
+				zLocalType = {
+					'border':'1px solid #FF3B30',
+					'color':'#FF3B30',
+					'padding': '8px 16px',
+					'margin': '8px 0',
+					'max-width': '18em',
+					'text-align': 'center',
+				};
+				break;
+			case "warning":
+				zLocalType = {
+					'border':'1px solid #FFCC00',
+					'color':'#FFCC00',
+					'padding': '8px 16px',
+					'margin': '8px 0',
+					'max-width': '18em',
+					'text-align': 'center',
+				};
+				break;
+			default:
+				zLocalType = {
+					'border':'1px solid #007AFF',
+					'color':'#007AFF',
+					'padding': '8px 16px',
+					'margin': '8px 0',
+					'max-width': '18em',
+					'text-align': 'center',
+				};
 		};
 	} else{
 		// set default value
@@ -81,7 +114,7 @@ function zCSS (zType) {
 			'color':'#007AFF',
 			'padding': '8px 16px',
 			'margin': '8px 0',
-			'width': '18em',
+			'max-width': '18em',
 			'text-align': 'center',
 		};
 	};
